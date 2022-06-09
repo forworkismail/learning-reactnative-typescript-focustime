@@ -9,12 +9,15 @@ import {
 } from 'react-native';
 import Focus from './src/features/Focus';
 import { colors } from './src/utils/colors';
+import { Provider as PaperProvider } from 'react-native-paper';
 
 export default function App() {
   return (
-    <SafeAreaView style={styles.container}>
-      <Focus></Focus>
-    </SafeAreaView>
+    <PaperProvider>
+      <SafeAreaView style={styles.container}>
+        <Focus></Focus>
+      </SafeAreaView>
+    </PaperProvider>
   );
 }
 

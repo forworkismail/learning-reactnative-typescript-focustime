@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { TextInput } from 'react-native-paper';
+import { RoundedButton } from '../components/RoundedButton';
 import { colors } from '../utils/colors';
 
 const Focus: React.FC = () => {
@@ -9,9 +10,13 @@ const Focus: React.FC = () => {
     <View style={styles.container}>
       <View style={styles.inputContainer}>
         <TextInput
+          style={styles.input}
           label="What would you like to focus on?"
           onChangeText={(text: string) => setSubject(text)}
         />
+        <View style={styles.button}>
+          <RoundedButton title="+" size={50} />
+        </View>
       </View>
     </View>
   );
@@ -22,9 +27,17 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   inputContainer: {
-    flex: 0.5,
-    justifyContent: 'flex-start',
+    // justifyContent: 'space-between',
+    alignContent: 'space-between',
     padding: 25,
+    flexDirection: 'row',
+  },
+  input: {
+    flex: 1,
+    marginRight: 10,
+  },
+  button: {
+    justifyContent: 'center',
   },
 });
 

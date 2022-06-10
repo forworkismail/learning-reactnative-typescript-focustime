@@ -25,6 +25,8 @@ const styles = (size: number) => ({
     height: size,
     justifyContent: 'center',
     alignItems: 'center',
+    borderColor: colors.white,
+    borderWidth: 2,
   },
   text: {
     color: colors.white,

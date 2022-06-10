@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Platform,
   SafeAreaView,
@@ -12,10 +12,17 @@ import { colors } from './src/utils/colors';
 import { Provider as PaperProvider } from 'react-native-paper';
 
 export default function App() {
+  const [currentSubject, setCurrentSubject] = useState('');
   return (
     <PaperProvider>
       <SafeAreaView style={styles.container}>
-        <Focus></Focus>
+        {!currentSubject ? (
+          <Focus addSubject={setCurrentSubject} />
+        ) : (
+          <View>
+            <Text>I am going to render the timer</Text>
+          </View>
+        )}
       </SafeAreaView>
     </PaperProvider>
   );

@@ -13,7 +13,7 @@ import { Provider as PaperProvider } from 'react-native-paper';
 import Timer from './src/features/Timer';
 
 export default function App() {
-  const [currentSubject, setCurrentSubject] = useState('adswd ');
+  const [currentSubject, setCurrentSubject] = useState('');
   return (
     <PaperProvider>
       <SafeAreaView style={styles.container}>
@@ -23,7 +23,9 @@ export default function App() {
           <Timer
             focusSubject={currentSubject}
             onTimerend={() => {}}
-            clearSubject={() => {}}
+            clearSubject={() => {
+              setCurrentSubject('');
+            }}
           />
         )}
       </SafeAreaView>

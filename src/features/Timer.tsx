@@ -1,10 +1,20 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, View, Text, Vibration } from 'react-native';
 import { ProgressBar } from 'react-native-paper';
 import { CountDown } from '../components/CountDown';
 import { RoundedButton } from '../components/RoundedButton';
 import { colors } from '../utils/colors';
 import { spacing } from '../utils/sizes';
+
+const ONE_SECOND_IN_MILLIS = 1000;
+
+const Pattern = [
+  1 * ONE_SECOND_IN_MILLIS,
+  1 * ONE_SECOND_IN_MILLIS,
+  1 * ONE_SECOND_IN_MILLIS,
+  1 * ONE_SECOND_IN_MILLIS,
+  1 * ONE_SECOND_IN_MILLIS,
+];
 
 type TimerProps = {
   focusSubject: string;
@@ -15,6 +25,7 @@ type TimerProps = {
 const Timer: React.FC<TimerProps> = ({ focusSubject }) => {
   const [isStarted, setIsStarted] = useState(false);
   const [progress, setProgress] = useState(1);
+  const [minutes, setMinutes] = useState(0.1);
 
   return (
     <View style={styles.container}>
@@ -22,7 +33,10 @@ const Timer: React.FC<TimerProps> = ({ focusSubject }) => {
         <CountDown
           isPaused={!isStarted}
           onProgress={setProgress}
-          onEnd={() => {}}
+          minutes={minutes}
+          onEnd={() => {
+            Vibration.vibrate(Pattern);
+          }}
         />
         <View style={{ paddingTop: spacing.xxl }}>
           <Text style={styles.title}>Focusing on:</Text>

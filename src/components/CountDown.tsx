@@ -8,7 +8,7 @@ const minutesToMillis = (min: number) => min * 1000 * 60;
 const formatTime = (time: number) => (time < 10 ? `0${time}` : time);
 
 type CountDownProps = {
-  minutes?: number;
+  minutes: number;
   isPaused: boolean;
   onProgress: (progress: number) => void;
   onEnd: () => void;

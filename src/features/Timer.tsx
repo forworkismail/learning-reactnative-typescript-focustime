@@ -20,11 +20,15 @@ const Pattern = [
 
 type TimerProps = {
   focusSubject: string;
-  onTimerend: () => void;
+  onTimerEnd: (focusSubject: string) => void;
   clearSubject: () => void;
 };
 
-const Timer: React.FC<TimerProps> = ({ focusSubject, clearSubject }) => {
+const Timer: React.FC<TimerProps> = ({
+  focusSubject,
+  clearSubject,
+  onTimerEnd,
+}) => {
   useKeepAwake();
   const [isStarted, setIsStarted] = useState(false);
   const [progress, setProgress] = useState(1);
@@ -35,6 +39,7 @@ const Timer: React.FC<TimerProps> = ({ focusSubject, clearSubject }) => {
     setIsStarted(false);
     setProgress(1);
     reset();
+    onTimerEnd(focusSubject);
   };
   return (
     <View style={styles.container}>

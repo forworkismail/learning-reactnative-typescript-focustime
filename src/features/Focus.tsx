@@ -30,9 +30,7 @@ const Focus: React.FC<FocusProps> = ({ addSubject }) => {
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
+  container: {},
   inputContainer: {
     // justifyContent: 'space-between',
     alignContent: 'space-between',

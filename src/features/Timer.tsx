@@ -26,8 +26,14 @@ type TimerProps = {
 const Timer: React.FC<TimerProps> = ({ focusSubject, clearSubject }) => {
   const [isStarted, setIsStarted] = useState(false);
   const [progress, setProgress] = useState(1);
-  const [minutes, setMinutes] = useState(0.5);
+  const [minutes, setMinutes] = useState(0.1);
 
+  const onEnd = (reset: Function) => {
+    Vibration.vibrate(Pattern);
+    setIsStarted(false);
+    setProgress(1);
+    reset();
+  };
   return (
     <View style={styles.container}>
       <View style={styles.countdown}>
@@ -35,9 +41,7 @@ const Timer: React.FC<TimerProps> = ({ focusSubject, clearSubject }) => {
           isPaused={!isStarted}
           onProgress={setProgress}
           minutes={minutes}
-          onEnd={() => {
-            Vibration.vibrate(Pattern);
-          }}
+          onEnd={onEnd}
         />
         <View style={{ paddingTop: spacing.xxl }}>
           <Text style={styles.title}>Focusing on</Text>

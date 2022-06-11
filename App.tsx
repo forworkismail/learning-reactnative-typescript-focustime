@@ -10,18 +10,21 @@ import {
 import Focus from './src/features/Focus';
 import { colors } from './src/utils/colors';
 import { Provider as PaperProvider } from 'react-native-paper';
+import Timer from './src/features/Timer';
 
 export default function App() {
-  const [currentSubject, setCurrentSubject] = useState('');
+  const [currentSubject, setCurrentSubject] = useState('adswd ');
   return (
     <PaperProvider>
       <SafeAreaView style={styles.container}>
         {!currentSubject ? (
           <Focus addSubject={setCurrentSubject} />
         ) : (
-          <View>
-            <Text>I am going to render the timer</Text>
-          </View>
+          <Timer
+            focusSubject={currentSubject}
+            onTimerend={() => {}}
+            clearSubject={() => {}}
+          />
         )}
       </SafeAreaView>
     </PaperProvider>

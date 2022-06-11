@@ -11,7 +11,7 @@ type CountDownProps = {
   minutes: number;
   isPaused: boolean;
   onProgress: (progress: number) => void;
-  onEnd: (reset: Function) => void;
+  onEnd: any;
 };
 
 export const CountDown: React.FC<CountDownProps> = ({
@@ -25,7 +25,9 @@ export const CountDown: React.FC<CountDownProps> = ({
 
   const [millis, setMillis] = useState(0);
 
-  const reset = () => setMillis(minutesToMillis(minutes));
+  const reset = () => {
+    setMillis(minutesToMillis(minutes));
+  };
 
   const countDown = () => {
     setMillis((time) => {

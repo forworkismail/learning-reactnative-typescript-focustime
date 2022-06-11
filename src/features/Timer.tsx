@@ -1,3 +1,4 @@
+import { useKeepAwake } from 'expo-keep-awake';
 import React, { useState } from 'react';
 import { StyleSheet, View, Text, Vibration } from 'react-native';
 import { ProgressBar } from 'react-native-paper';
@@ -24,6 +25,7 @@ type TimerProps = {
 };
 
 const Timer: React.FC<TimerProps> = ({ focusSubject, clearSubject }) => {
+  useKeepAwake();
   const [isStarted, setIsStarted] = useState(false);
   const [progress, setProgress] = useState(1);
   const [minutes, setMinutes] = useState(0.1);
